@@ -65,8 +65,9 @@ public class FlingSpringAnim {
                     .setStartValue(value)
                     .setStartVelocity(velocity)
                     .setSpring(new SpringForce(mTargetPosition)
-                            .setStiffness(stiffness)
-                            .setDampingRatio(damping));
+                                                    .setStiffness(850f)       // Aceleración inicial mucho más rápida y fluida
+                                                                            .setDampingRatio(0.58f)); // Menor fricción = rebote más elástico y líquido
+                                                                            
             mSpringAnim.addEndListener(onEndListener);
             mSpringAnim.animateToFinalPosition(mTargetPosition);
         }));

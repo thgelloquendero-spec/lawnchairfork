@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
  *
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -1207,6 +1208,14 @@ public class Workspace<T extends View & PageIndicator> extends PagedView<T>
      */
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
+         // == MODIFICACIÓN DEL FORK: GESTO DE 2 DEDOS ==
+                 if (ev.getPointerCount() == 2) {
+                             if ((ev.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_POINTER_DOWN) {
+                                             mLauncher.showOptionsPopup(true);
+                                                             return true;
+                                                                         }
+                                                                                 }
+                                                                                        
         if (shouldSkipPagedViewInterceptionForIconSwipe(ev)) {
             return false;
         } // Lawnchair: Icon swipe gesture feature
