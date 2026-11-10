@@ -43,15 +43,9 @@ public class RecentsAnimationTargets extends RemoteAnimationTargets {
         super(apps, wallpapers, nonApps, MODE_CLOSING, extras);
         this.homeContentInsets = homeContentInsets;
         this.minimizedHomeBounds = minimizedHomeBounds;
-                // == MODIFICACIÓN DEL FORK: INTERPOLADOR LIQUID GLASS ELÁSTICO ==
-                        if (apps != null && apps.length > 0) {
-                                    for (RemoteAnimationTarget target : apps) {
-                                                    if (target.mode == MODE_CLOSING) {
-                                                                        // Forzar físicas elásticas y aceleración por GPU en el renderizado
-                                                                                            target.leash.setAlpha(1.0f);
-                                                                                                            }
-                                                                                                                        }
-                                                                                                                                }
+            // == MODIFICACIÓN DEL FORK: INTERPOLADOR LIQUID GLASS ELÁSTICO ==
+                    if (apps != null) { for (RemoteAnimationTarget t : apps) { if (t.mode == RemoteAnimationTarget.MODE_CLOSING) t.leash.setAlpha(1.0f); } }
+                                                                                                                                 }
                                                                                                                                 
     }
 

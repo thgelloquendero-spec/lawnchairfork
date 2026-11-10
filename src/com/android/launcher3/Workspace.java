@@ -1207,14 +1207,15 @@ public class Workspace<T extends View & PageIndicator> extends PagedView<T>
      * Needed here because launcher has a fullscreen exclusion rect and doesn't pilfer the pointers.
      */
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-         // == MODIFICACIÓN DEL FORK: GESTO DE 2 DEDOS ==
-                 if (ev.getPointerCount() == 2) {
-                             if ((ev.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_POINTER_DOWN) {
-                                             mLauncher.showOptionsPopup(true);
-                                                             return true;
-                                                                         }
-                                                                                 }
+    public boolean onInterceptTouchEvent(MotionEvent ev) 
+            // == MODIFICACIÓN DEL FORK: GESTO DE 2 DEDOS ==
+                    if (ev.getPointerCount() == 2) {
+                                if ((ev.getAction() & MotionEvent.ACTION_MASK) == MotionEvent.ACTION_POINTER_DOWN) {
+                                                mActivity.showOptionsPopup(true);
+                                                                return true;
+                                                                            }
+                                                                                    }
+                                                                                    
                                                                                         
         if (shouldSkipPagedViewInterceptionForIconSwipe(ev)) {
             return false;
